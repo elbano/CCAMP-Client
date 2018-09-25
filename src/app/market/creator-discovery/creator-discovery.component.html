@@ -1,3 +1,57 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <h1>Slides</h1>
+</section>
+<!--Run the Spinner until the Slide list is loaded-->
+<!-- <app-spinner [diameter]="100" [strokeWidth]="3" [topStyle]="slideListTopStyle" [rightStyle]="slideListRightStyle"></app-spinner> -->
+<section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <div class="slides-table mat-elevation-z8">
+     <mat-table #table [dataSource]="contentCreatorList" class="slide-list-center">
+
+        <!-- Thumbnail Column -->
+        <ng-container matColumnDef="thumbnail">
+           <mat-header-cell  *matHeaderCellDef> Thumbnail </mat-header-cell>
+           <mat-cell  *matCellDef="let contentCreator">
+
+             <img class=slide-list-image *ngIf="contentCreator.slideValid" [src]="contentCreator.ThumbnailURL" (error)="contentCreator.slideValid = false">
+             <span *ngIf="!slide.slideValid"> Image not found </span>
+           </mat-cell>
+        </ng-container>
+
+        <!-- Label Column -->
+        <ng-container matColumnDef="label">
+           <mat-header-cell  *matHeaderCellDef> Label </mat-header-cell>
+           <mat-cell  *matCellDef="let slide">
+
+             <img class="slide-list-image " *ngIf="contentCreator.slideValid" [src]="contentCreator.LabelURL" (error)="contentCreator.slideValid = false">
+             <span *ngIf="!contentCreator.slideValid"> Image not found</span>
+
+           </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="slideName">
+           <mat-header-cell  *matHeaderCellDef> Name </mat-header-cell>
+           <mat-cell *matCellDef="let contentCreator"> {{ contentCreator }} </mat-cell>
+        </ng-container>
+
+        <!-- Acquired Date Column -->
+        <ng-container matColumnDef="acquisitionDate">
+           <mat-header-cell  *matHeaderCellDef> Acquisition Date </mat-header-cell>
+           <mat-cell *matCellDef="let slide"> {{ contentCreator }} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"
+           (click)="onSlideClick(row)" class="row-pointer"></mat-row>
+
+     </mat-table>
+  </div>
+</section>
+
+
 <p>
   creator-discovery works!
+</p>
+<p>
+  {{ contentCreatorList }}
 </p>

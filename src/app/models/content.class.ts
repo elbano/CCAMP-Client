@@ -1,4 +1,4 @@
-import { ContentCreator } from './contentCreator.class';
+import { ContentCreator } from './content-creator.class';
 import { Transaction } from './transaction.class';
 
 export class Content {

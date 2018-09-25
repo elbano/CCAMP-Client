@@ -1,0 +1,12 @@
+<span *ngIf="isLoading">
+    <mat-spinner
+     [strokeWidth]="strokeWidth"
+     [diameter]="diameter"
+     class="spinnerSpec"
+     [style.top.%]="topStyle"
+     [style.right.%]="rightStyle">
+    </mat-spinner>
+    <!--  topStyle component can pass and set top style height -->
+    <!--  rightStyle component can pass and set right style -->
+</span>
+

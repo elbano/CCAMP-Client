@@ -7,7 +7,7 @@ import { CreatorDiscoveryComponent } from './creator-discovery/creator-discovery
 
 const routes: Routes = [
    { path: 'dashboard/:id', component: CampaignDashboardComponent/*, canActivate: [AuthGuard]*/},
-   { path: 'discovery/:id', component: CreatorDiscoveryComponent/*, canActivate: [AuthGuard]*/}
+   { path: 'discovery', component: CreatorDiscoveryComponent/*, canActivate: [AuthGuard]*/}
 ];
 
 @NgModule({

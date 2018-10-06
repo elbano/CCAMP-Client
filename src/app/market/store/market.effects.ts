@@ -7,11 +7,10 @@ import * as fromRoot from '../../app.reducer';
 import * as MarketActions from './market.actions';
 import { ContentCreator } from '../../models/content-creator.class';
 import { CreatorDiscoveryService } from '../creator-discovery/creator-discovery.service';
-// import { Utility } from '../../shared/';
-
+import { Channel } from '../../models/channel.class';
 
 @Injectable()
-export class MarkettEffects {
+export class MarketEffects {
 
   constructor(
     private actions$: Actions,
@@ -35,13 +34,7 @@ export class MarkettEffects {
         return creatorListJSON.pipe(map(creatorList => {
           console.log(creatorList);
            return creatorList.map(creator => {
-              return new ContentCreator(
-                //  scan.Guid,
-                //  Utility.getThumbnailURLBySlideName(scan.Name),
-                //  Utility.getLabelURLBySlideName(scan.Name),
-                //  scan.Name,
-                //  scan.CreationDate
-              );
+              return new ContentCreator(creator);
            });
         }));
      }),
@@ -50,4 +43,29 @@ export class MarkettEffects {
        return this.rootStore.dispatch(new MarketActions.StoreCreatorList(list));
      })
    );
+
+   @Effect({ dispatch: false})
+   getChannelList$ = this.actions$.pipe(
+     ofType(MarketActions.GET_CHANNEL_LIST),
+     map(() => {
+       // return the API response
+       const response = this.creatorDiscoveryService.getChannels();
+       console.log(response);
+       return response;
+     }),
+     switchMap((channelListJSON) => {
+        return channelListJSON.pipe(map(channelList => {
+          console.log(channelList);
+           return channelList.map(channel => {
+              return new Channel(channel);
+           });
+        }));
+     }),
+     map((list: Channel[]) => {
+       // use the Collection of Slide list Model to populate Slide List in Store
+       return this.rootStore.dispatch(new MarketActions.StoreChannelList(list));
+     })
+   );
+
+
 }

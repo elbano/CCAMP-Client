@@ -1,4 +1,4 @@
-import { ContentCreator } from './content-creator.class';
+import { Channel } from './channel.class';
 import { Transaction } from './transaction.class';
 
 export class Content {
@@ -7,6 +7,6 @@ export class Content {
     title: string;
     urlMediaPath: string;
     creationDate: Date;
-    contentCreator: ContentCreator;
+    channel: Channel;
     transactionList: Transaction[];
 }

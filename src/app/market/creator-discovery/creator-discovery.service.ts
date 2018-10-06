@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ContentCreatorEndpoint } from '../../api-model-endpoints/content-creator-endpoint.class';
 import { ContentCreator } from '../../models/content-creator.class';
 import { Observable } from 'rxjs';
+import { Channel } from '../../models/channel.class';
 
 @Injectable()
 export class CreatorDiscoveryService {
@@ -13,16 +14,11 @@ export class CreatorDiscoveryService {
         this.contentCreatorEndpoint = new ContentCreatorEndpoint(http);
     }
 
-    public getCreatorsArray(): ContentCreator[] {
-        let creatorList: ContentCreator[];
-        this.contentCreatorEndpoint.fetchCreatorListData().subscribe(result => {
-            console.log(result);
-            creatorList = result;
-        });
-        return creatorList;
+    public getCreators(): Observable<ContentCreator[]> {
+        return this.contentCreatorEndpoint.fetchCreatorListData();
     }
 
-    public getCreators(): Observable<ContentCreator[]> {
-        return this.http.get<ContentCreator[]>('http://localhost:44958/api/ContentCreators/');
+    public getChannels(): Observable<Channel[]> {
+        return this.contentCreatorEndpoint.fetchChannelListData();
     }
 }

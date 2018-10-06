@@ -1,43 +1,32 @@
 <section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
-  <h1>Slides</h1>
+  <h1>Channels</h1>
 </section>
 <!--Run the Spinner until the Slide list is loaded-->
 <!-- <app-spinner [diameter]="100" [strokeWidth]="3" [topStyle]="slideListTopStyle" [rightStyle]="slideListRightStyle"></app-spinner> -->
 <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
   <div class="slides-table mat-elevation-z8">
-     <mat-table #table [dataSource]="contentCreatorList" class="slide-list-center">
+     <mat-table #table [dataSource]="dataSource" class="slide-list-center">
 
         <!-- Thumbnail Column -->
         <ng-container matColumnDef="thumbnail">
            <mat-header-cell  *matHeaderCellDef> Thumbnail </mat-header-cell>
-           <mat-cell  *matCellDef="let contentCreator">
+           <mat-cell  *matCellDef="let channel">
 
-             <img class=slide-list-image *ngIf="contentCreator.slideValid" [src]="contentCreator.ThumbnailURL" (error)="contentCreator.slideValid = false">
-             <span *ngIf="!slide.slideValid"> Image not found </span>
-           </mat-cell>
-        </ng-container>
-
-        <!-- Label Column -->
-        <ng-container matColumnDef="label">
-           <mat-header-cell  *matHeaderCellDef> Label </mat-header-cell>
-           <mat-cell  *matCellDef="let slide">
-
-             <img class="slide-list-image " *ngIf="contentCreator.slideValid" [src]="contentCreator.LabelURL" (error)="contentCreator.slideValid = false">
-             <span *ngIf="!contentCreator.slideValid"> Image not found</span>
-
+             <img class=slide-list-image *ngIf="channel.thumbnailURL!=null" [src]="channel.thumbnailURL">
+             <span *ngIf="!channel.thumbnailURL"> Image not found </span>
            </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="slideName">
+        <ng-container matColumnDef="name">
            <mat-header-cell  *matHeaderCellDef> Name </mat-header-cell>
-           <mat-cell *matCellDef="let contentCreator"> {{ contentCreator }} </mat-cell>
+           <mat-cell *matCellDef="let channel"> {{ channel.name }} </mat-cell>
         </ng-container>
 
         <!-- Acquired Date Column -->
-        <ng-container matColumnDef="acquisitionDate">
+        <ng-container matColumnDef="creationdate">
            <mat-header-cell  *matHeaderCellDef> Acquisition Date </mat-header-cell>
-           <mat-cell *matCellDef="let slide"> {{ contentCreator }} </mat-cell>
+           <mat-cell *matCellDef="let channel"> {{ channel.creationDate }} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -51,7 +40,4 @@
 
 <p>
   creator-discovery works!
-</p>
-<p>
-  {{ contentCreatorList }}
 </p>

@@ -4,7 +4,11 @@ import { CreatorDiscoveryService } from './creator-discovery.service';
 import { CreatorDiscoveryDataSource } from './creator-discovery.datasource';
 import * as SpinnerActions from '../../shared/spinner/store/spinner.actions';
 import * as fromRoot from '../../app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import * as MarketActions from '../store/market.actions';
+import { SubscriptionLike } from 'rxjs';
+import { getChannelList } from '../../app.reducer';
+import { GetChannelList } from '../store/market.actions';
 
 @Component({
   selector: 'app-creator-discovery',
@@ -14,20 +18,20 @@ import { Store } from '@ngrx/store';
 export class CreatorDiscoveryComponent implements OnInit {
 
   dataSource: CreatorDiscoveryDataSource;
+  channelListSubscription: SubscriptionLike;
 
-  displayedColumns = ['thumbnail', 'label', 'slideName', 'acquisitionDate'];
+  displayedColumns = ['thumbnail', 'name', 'creationdate'];
 
   contentCreatorList: ContentCreator[];
 
   constructor(private rootStore: Store<fromRoot.State>, private creatorDiscoveryService: CreatorDiscoveryService) { }
 
   ngOnInit() {
-    // this.contentCreatorList = this.creatorDiscoveryService.getCreators();
-    this.creatorDiscoveryService.getCreatorsArray();
 
     this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(true));
     this.dataSource = new CreatorDiscoveryDataSource(this.creatorDiscoveryService, this.rootStore);
-    this.dataSource.fetchCreators();
+    this.dataSource.fetchChannels();
+    console.log(this.dataSource);
   }
 
 }

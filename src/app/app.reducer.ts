@@ -47,8 +47,9 @@ export const getSpinnerState = createFeatureSelector<fromSpinner.State>('spinner
 export const getIsSpinnerLoading = createSelector(getSpinnerState, fromSpinner.isLoading);
 
 // Market Selectors
-export const getCreatorListState = createFeatureSelector<fromMarket.State>('market');
-export const getCreatorList = createSelector(getCreatorListState, fromMarket.getCreatorList);
+export const getMarketState = createFeatureSelector<fromMarket.State>('market');
+export const getCreatorList = createSelector(getMarketState, fromMarket.getCreatorList);
+export const getChannelList = createSelector(getMarketState, fromMarket.getChannelList);
 // export const getPrevSlide = createSelector(getSlideListState, fromSlideList.getPrevSlide);
 // export const getNextSlide = createSelector(getSlideListState, fromSlideList.getNextSlide);
 

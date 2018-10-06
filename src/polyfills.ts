@@ -78,3 +78,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+// Fix for 'global is not defined Angular 6'
+// https://github.com/auth0/auth0.js/issues/753
+(window as any).global = window;
+

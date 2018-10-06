@@ -1,3 +1,5 @@
+import { LoggingLevels } from '../app/core/services/loggingLevels';
+
 export const environment = {
   production: false,
   serverBaseURL: 'http://' + window.location.hostname + ':44958/',
@@ -5,5 +7,6 @@ export const environment = {
   authClientID: 'oIPI9hJUvCaynZlgfWhxWhYOm7eqs6Mp',
   authDomain: 'ccampapi.auth0.com',
   clientBaseURLPort: window.location.protocol + '//' +
-      window.location.hostname + ':' + window.location.port + '/'
+    window.location.hostname + ':' + window.location.port + '/',
+  clientLoggingLevel: LoggingLevels.ALL
 };

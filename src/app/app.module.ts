@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MarketModule } from './market/market.module';
 import { MaterialModule } from './material.module';
 import { ChannelModule } from './channel/channel.module';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 // Components and services
 import { AppComponent } from './app.component';
@@ -33,9 +35,11 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     AccountModule,
     AppRoutingModule,
+    AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
     ChannelModule,
+    CoreModule,
     MarketModule,
     MaterialModule,
     FlexLayoutModule,

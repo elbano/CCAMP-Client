@@ -2,6 +2,7 @@ import { ActionReducerMap, createFeatureSelector, createSelector, ActionReducer,
 import * as fromRouter from '@ngrx/router-store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
+import * as fromAuth from './auth/auth.reducer';
 import * as fromSpinner from './shared/spinner/store/spinner.reducer';
 import * as fromMarket from './market/store/market.reducer';
 import { RouterStateUrl } from './router-store-utils';
@@ -9,38 +10,23 @@ import { environment } from '../environments/environment';
 
 
 export interface State {
-//    auth: fromAuth.State;
-//    viewer: fromViewer.State;
+   auth: fromAuth.State;
    router: fromRouter.RouterReducerState<RouterStateUrl>;
    spinner: fromSpinner.State;
    market: fromMarket.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-//    auth: fromAuth.authReducer,
-//    viewer: fromViewer.slideViewerReducer,
+   auth: fromAuth.authReducer,
    router: fromRouter.routerReducer,
    spinner: fromSpinner.spinnerReducer,
    market: fromMarket.marketReducer
 };
 
 // The parameter 'auth' must match the name in the interface State auth.
-// export const getAuthState = createFeatureSelector<fromAuth.State>('auth');
-// export const getIsAuth = createSelector(getAuthState, fromAuth.getIsAuth);
-// export const getAuthHeader = createSelector(getAuthState, fromAuth.getAuthHeader);
-
-// Slide viewer selectors
-// export const getSlideViewerState = createFeatureSelector<fromViewer.State>('viewer');
-// export const getSlideScanData = createSelector(getSlideViewerState, fromViewer.calculateSlideScan);
-// export const isFLSlide = createSelector(getSlideViewerState, fromViewer.calculateIsFLSlide);
-// export const getSelectedLayer = createSelector(getSlideViewerState, fromViewer.calculateSelectedLayer);
-// export const getLayersForToggleVisibility = createSelector(getSlideViewerState, fromViewer.calculateVisibilityAllLayers);
-// export const getLayerSelectedForColorChange = createSelector(getSlideViewerState, fromViewer.calculateSelectedLayer);
-// export const getScanLayerList = createSelector(getSlideViewerState, fromViewer.calculateScanLayerList);
-// export const getAnnotationList = createSelector(getSlideViewerState, fromViewer.calculateAnnotationList);
-// export const getContributionStudy = createSelector(getSlideViewerState, fromViewer.calculateContributionStudy);
-// export const canAnnotate = createSelector(getSlideViewerState, fromViewer.calculateCanAnnotate);
-// export const getAnnotationMode = createSelector(getSlideViewerState, fromViewer.calculateAnnotationMode);
+export const getAuthState = createFeatureSelector<fromAuth.State>('auth');
+export const getIsAuth = createSelector(getAuthState, fromAuth.getIsAuth);
+export const getAuthHeader = createSelector(getAuthState, fromAuth.getAuthHeader);
 
 // Spinner Loading Status
 export const getSpinnerState = createFeatureSelector<fromSpinner.State>('spinner');
@@ -50,9 +36,6 @@ export const getIsSpinnerLoading = createSelector(getSpinnerState, fromSpinner.i
 export const getMarketState = createFeatureSelector<fromMarket.State>('market');
 export const getCreatorList = createSelector(getMarketState, fromMarket.getCreatorList);
 export const getChannelList = createSelector(getMarketState, fromMarket.getChannelList);
-// export const getPrevSlide = createSelector(getSlideListState, fromSlideList.getPrevSlide);
-// export const getNextSlide = createSelector(getSlideListState, fromSlideList.getNextSlide);
-
 
 /// BELOW THIS LINE DEVELOPMENT ONLY
 // From the ngrx example app

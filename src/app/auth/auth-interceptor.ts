@@ -12,7 +12,7 @@ import * as fromRoot from '../app.reducer';
 import { getAuthHeader } from '../app.reducer';
 import * as AuthActions from './auth.actions';
 
-import { LogService, Level } from '../core/services/logger.service';
+import { LogService } from '../core/services/logger.service';
 
 /**
  * The AuthInterceptor automatically attaches authentication information to requests.
@@ -97,7 +97,8 @@ export class NoDataInterceptor implements HttpInterceptor {
                         if (err.status === 404) {
                               const snackBarRef = this.openSnackBar('Error - No Content Found', 'Ok');
                               snackBarRef.afterDismissed().subscribe(() => {
-                                    this.logger.log('No content found', Level.ERROR, false)
+                                    // this.location.back();
+                                    this.logger.log('No content found', 'ERROR', false);
                               });
                         } else if (err.status === 403) {
                               const snackBarRef = this.openSnackBar('Forbidden', 'Ok');

@@ -95,11 +95,11 @@ export class NoDataInterceptor implements HttpInterceptor {
             }, (err: any) => {
                   if (err instanceof HttpErrorResponse) {
                         if (err.status === 404) {
-                              const snackBarRef = this.openSnackBar('Error - No Content Found', 'Ok');
-                              snackBarRef.afterDismissed().subscribe(() => {
-                                    // this.location.back();
-                                    this.logger.log('No content found', 'ERROR', false);
-                              });
+                              // const snackBarRef = this.openSnackBar('Error - No Content Found', 'Ok');
+                              // snackBarRef.afterDismissed().subscribe(() => {
+                              //       // this.location.back();
+                              //       this.logger.log('No content found', 'ERROR', false);
+                              // });
                         } else if (err.status === 403) {
                               const snackBarRef = this.openSnackBar('Forbidden', 'Ok');
                               snackBarRef.afterDismissed().subscribe(() => {

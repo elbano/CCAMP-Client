@@ -29,7 +29,7 @@ export class CallbackComponent implements OnInit {
       
      this.rootStore.pipe(select(getIsAuth)).subscribe((isAuth) => {
         if (isAuth) {
-            this.router.navigate(['channel/1']);
+            this.router.navigate(['discovery']);
             this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(false));
         } else {
             this.router.navigate(['']);

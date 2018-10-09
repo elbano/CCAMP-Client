@@ -26,11 +26,13 @@ export class CallbackComponent implements OnInit {
       // Subscribing to the getIsAuth redirects us to the slides page after the second visit
       // to the callback which fixes not being routed the the slides page in Firefox.
       // TODO: Still need to fix callback page being double tapped.
+      
      this.rootStore.pipe(select(getIsAuth)).subscribe((isAuth) => {
         if (isAuth) {
-            console.log('has auth');
             this.router.navigate(['channel/1']);
             this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(false));
+        } else {
+            this.router.navigate(['']);
         }
      });
    }

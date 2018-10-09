@@ -25,14 +25,12 @@ export class MarketEffects {
      map(() => {
        // return the API response
        const response = this.creatorDiscoveryService.getCreators();
-       console.log(response);
        return response;
      }),
      switchMap((creatorListJSON) => {
         // creatorListJSON is an an Observable containing an JSON of Creatpr list
         // Note map here iterates through each element of array and modifies them
         return creatorListJSON.pipe(map(creatorList => {
-          console.log(creatorList);
            return creatorList.map(creator => {
               return new ContentCreator(creator);
            });
@@ -50,12 +48,10 @@ export class MarketEffects {
      map(() => {
        // return the API response
        const response = this.creatorDiscoveryService.getChannels();
-       console.log(response);
        return response;
      }),
      switchMap((channelListJSON) => {
         return channelListJSON.pipe(map(channelList => {
-          console.log(channelList);
            return channelList.map(channel => {
               return new Channel(channel);
            });

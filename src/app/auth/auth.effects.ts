@@ -32,7 +32,7 @@ export class AuthEffects {
    setUnauthenticated$ = this.actions$.pipe(
       ofType(AuthActions.SET_UNAUTHENTICATED),
       tap((action: AuthActions.SetUnauthenticated) => this.authService.logout()),
-      tap(() => this.router.navigate(['/home']))
+      tap(() => this.router.navigate(['/main']))
    );
 
    @Effect({ dispatch: false })

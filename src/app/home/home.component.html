@@ -1,3 +1,6 @@
 <p>
   home works!
 </p>
+<button *ngIf="!(isAuthenticated$ | async)" mat-raised-button="" (click)="login()" >
+  Login
+</button>

@@ -7,7 +7,7 @@ import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
    { path: 'dashboard/:id', component: CampaignDashboardComponent, canActivate: [AuthGuard]},
-   { path: 'discovery', component: CreatorDiscoveryComponent/*, canActivate: [AuthGuard]*/}
+   { path: 'discovery', component: CreatorDiscoveryComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

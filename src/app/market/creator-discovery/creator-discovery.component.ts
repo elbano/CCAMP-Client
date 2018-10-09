@@ -31,7 +31,6 @@ export class CreatorDiscoveryComponent implements OnInit {
     this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(true));
     this.dataSource = new CreatorDiscoveryDataSource(this.creatorDiscoveryService, this.rootStore);
     this.dataSource.fetchChannels();
-    console.log(this.dataSource);
   }
 
 }

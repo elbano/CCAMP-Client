@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 /**
  * This module is a central location for common modules needed by other application modules.
@@ -23,8 +24,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
       FormsModule,
       ReactiveFormsModule,
       FlexLayoutModule,
-      SpinnerComponent
+      SpinnerComponent,
+      MenuBarComponent
    ],
-   declarations: [ SpinnerComponent ]
+   declarations: [ SpinnerComponent, MenuBarComponent ]
    })
 export class SharedModule { }

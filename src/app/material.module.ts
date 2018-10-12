@@ -20,7 +20,8 @@ import {
    MatSliderModule,
    MatMenuModule,
    MatIconRegistry,
-   MatTableModule
+   MatTableModule,
+   MatPaginatorModule
 } from '@angular/material';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -45,7 +46,8 @@ import { DomSanitizer } from '@angular/platform-browser';
       MatSelectModule,
       MatSliderModule,
       MatMenuModule,
-      MatTableModule
+      MatTableModule,
+      MatPaginatorModule
    ],
    exports: [
       MatIconModule,
@@ -66,7 +68,8 @@ import { DomSanitizer } from '@angular/platform-browser';
       MatSelectModule,
       MatSliderModule,
       MatMenuModule,
-      MatTableModule
+      MatTableModule,
+      MatPaginatorModule
    ]
 })
 export class MaterialModule {

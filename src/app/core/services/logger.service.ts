@@ -73,7 +73,7 @@ export class LogService {
 
 
         if (logToServer) {
-            this.http.post<LogOptions>(serverBaseURL + 'api/logger', logOptions).subscribe(res => {
+            this.http.post<LogOptions>(serverBaseURL + 'api/log', logOptions).subscribe(res => {
                 logOptions = res;
             }, error => console.error(error));
         }

@@ -86,10 +86,10 @@ export class NoDataInterceptor implements HttpInterceptor {
             return next.handle(request).pipe(tap((event: HttpEvent<any>) => {
                   if (event instanceof HttpResponse) {
                         if ((event as HttpResponse<any>).status === 204) {
-                              const snackBarRef = this.openSnackBar('No Content Found', 'Ok');
-                              snackBarRef.afterDismissed().subscribe(() => {
-                                    this.location.back();
-                              });
+                              // const snackBarRef = this.openSnackBar('No Content Found', 'Ok');
+                              // snackBarRef.afterDismissed().subscribe(() => {
+                              //       this.location.back();
+                              // });
                         }
                   }
             }, (err: any) => {

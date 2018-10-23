@@ -1,7 +1,6 @@
 <ul>
-  <li><a class="active" href="#home">Discovery</a></li>
-  <li><a href="#channel">Channel</a></li>
-  <li><a href="#campaign">Campaign</a></li>
-  <li><a href="#account">Account</a></li>
-  <li><a href="#signout">Sign out</a></li>
+  <li *ngFor="let section of sectionList">
+    <span [ngClass]="(this.router.url.indexOf(section.page) > -1)?'active':''" 
+      (click)="navigateTo(section)">{{ section.name }}</span>
+  </li>
 </ul>

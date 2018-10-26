@@ -15,5 +15,5 @@ export class ContentCreator extends User {
         this.lastName = options.lastName;
         this.companyName = options.companyName;
         this.channelList = options.channelList;
-  }
+    }
 }

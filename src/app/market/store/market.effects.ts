@@ -37,7 +37,6 @@ export class MarketEffects {
         }));
      }),
      map((list: ContentCreator[]) => {
-       // use the Collection of Slide list Model to populate Slide List in Store
        return this.rootStore.dispatch(new MarketActions.StoreCreatorList(list));
      })
    );
@@ -58,7 +57,6 @@ export class MarketEffects {
         }));
      }),
      map((list: Channel[]) => {
-       // use the Collection of Slide list Model to populate Slide List in Store
        return this.rootStore.dispatch(new MarketActions.StoreChannelList(list));
      })
    );

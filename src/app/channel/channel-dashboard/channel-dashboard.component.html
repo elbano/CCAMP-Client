@@ -1,6 +1,40 @@
 <app-menu-bar></app-menu-bar>
 
-<p>
-  channel-dashboard works!
-  This is where we list the number of campaign proposal  to the channel and other relevant info
-</p>
+<div class="element-container">
+
+  <div class="element-bar element-app-grey">
+    <button class="element-bar-item element-button tablink" 
+      [ngClass]="tabList[0].css" (click)="openTab(tabList[0].name)">{{tabList[0].name}}</button>
+    <button class="element-bar-item element-button tablink"
+      [ngClass]="tabList[1].css" (click)="openTab(tabList[1].name)">{{tabList[1].name}}</button>
+    <button class="element-bar-item element-button tablink"
+      [ngClass]="tabList[2].css" (click)="openTab(tabList[2].name)">{{tabList[2].name}}</button>
+  </div>
+
+  <div id="Proposals" class="element-container element-border" [ngStyle]="{'display':tabList[0].style}">
+    <h2>Proposals</h2>
+    <p>Proposals</p>
+  </div>
+
+  <div id="Paiments" class="element-container element-border" [ngStyle]="{'display':tabList[1].style}">
+    <h2>Paiments</h2>
+    <p>Paiments</p>
+  </div>
+
+  <div id="Finished" class="element-container element-border" [ngStyle]="{'display':tabList[2].style}">
+    <h2>Finished</h2>
+    <p>Finished</p>
+  </div>
+</div>
+
+<!-- <mat-tab-group>
+  <mat-tab label="Proposal">
+    Tab 1
+  </mat-tab>
+  <mat-tab label="Paiments">
+    Tab 2
+  </mat-tab>
+  <mat-tab label="Finish">
+    Tab 3
+  </mat-tab>
+</mat-tab-group> -->

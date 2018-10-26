@@ -5,6 +5,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromAuth from './auth/auth.reducer';
 import * as fromSpinner from './shared/spinner/store/spinner.reducer';
 import * as fromMarket from './market/store/market.reducer';
+import * as fromChannel from './channel/store/channel.reducer';
 import { RouterStateUrl } from './router-store-utils';
 import { environment } from '../environments/environment';
 
@@ -14,13 +15,15 @@ export interface State {
    router: fromRouter.RouterReducerState<RouterStateUrl>;
    spinner: fromSpinner.State;
    market: fromMarket.State;
+   channel: fromChannel.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
    auth: fromAuth.authReducer,
    router: fromRouter.routerReducer,
    spinner: fromSpinner.spinnerReducer,
-   market: fromMarket.marketReducer
+   market: fromMarket.marketReducer,
+   channel: fromChannel.channelReducer
 };
 
 // The parameter 'auth' must match the name in the interface State auth.
@@ -36,6 +39,10 @@ export const getIsSpinnerLoading = createSelector(getSpinnerState, fromSpinner.i
 export const getMarketState = createFeatureSelector<fromMarket.State>('market');
 export const getCreatorList = createSelector(getMarketState, fromMarket.getCreatorList);
 export const getChannelList = createSelector(getMarketState, fromMarket.getChannelList);
+
+// Market Selectors
+export const getChannelState = createFeatureSelector<fromChannel.State>('channel');
+export const getProposalList = createSelector(getChannelState, fromChannel.getProposalList);
 
 /// BELOW THIS LINE DEVELOPMENT ONLY
 // From the ngrx example app

@@ -1,14 +1,14 @@
 <app-menu-bar></app-menu-bar>
-<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+<!--<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
   <h1>Channels</h1>
-</section>
+</section>-->
 <!--Run the Spinner until the Slide list is loaded-->
 <!-- <app-spinner [diameter]="100" [strokeWidth]="3" [topStyle]="slideListTopStyle" [rightStyle]="slideListRightStyle"></app-spinner> -->
-<section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+<!--<section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
   <div class="slides-table mat-elevation-z8">
      <mat-table #table [dataSource]="dataSource" class="slide-list-center">
 
-        <!-- Thumbnail Column -->
+        Thumbnail Column 
         <ng-container matColumnDef="thumbnail">
            <mat-header-cell  *matHeaderCellDef> Thumbnail </mat-header-cell>
            <mat-cell  *matCellDef="let channel">
@@ -18,13 +18,13 @@
            </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
+         Name Column 
         <ng-container matColumnDef="name">
            <mat-header-cell  *matHeaderCellDef> Name </mat-header-cell>
            <mat-cell *matCellDef="let channel"> {{ channel.name }} </mat-cell>
         </ng-container>
 
-        <!-- Acquired Date Column -->
+         Acquired Date Column 
         <ng-container matColumnDef="creationdate">
            <mat-header-cell  *matHeaderCellDef> Acquisition Date </mat-header-cell>
            <mat-cell *matCellDef="let channel"> {{ channel.creationDate }} </mat-cell>
@@ -36,9 +36,28 @@
 
      </mat-table>
   </div>
-</section>
+</section>-->
 
-
-<p>
-  creator-discovery works!
-</p>
+<!-- channelList is a public variable from the component that contains the channel list retrieved
+by the component and that is contained in the store -->
+<div class="element-container" *ngFor="let channel of channelList">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>title</mat-card-title>
+      <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <!--<mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>-->
+  </mat-card>
+</div>

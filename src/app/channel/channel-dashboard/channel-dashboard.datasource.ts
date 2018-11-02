@@ -5,17 +5,15 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app.reducer';
 import * as SpinnerActions from '../../shared/spinner/store/spinner.actions';
-import { ContentCreator } from '../../models/content-creator.class';
 import { GetProposalList } from '../store/channel.actions';
 import { getProposalList } from '../../app.reducer';
-import { ChannelDashboardService } from './channel-dashboard.service';
 import { Deal } from 'src/app/models/deal.class';
 
 export class ChannelDashboardDataSource extends DataSource<Deal> {
 
     private dealListSubject = new BehaviorSubject<Deal[]>([]);
 
-    constructor(private channelDashboardService: ChannelDashboardService, private rootStore: Store<fromRoot.State>) {
+    constructor(private rootStore: Store<fromRoot.State>) {
         super();
     }
 

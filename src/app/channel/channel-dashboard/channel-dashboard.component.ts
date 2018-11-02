@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelDashboardDataSource } from './channel-dashboard.datasource';
-import { ChannelDashboardService } from './channel-dashboard.service';
 
 import * as SpinnerActions from '../../shared/spinner/store/spinner.actions';
 import * as fromRoot from '../../app.reducer';
@@ -25,12 +24,12 @@ export class ChannelDashboardComponent implements OnInit {
   new Tab({ name: 'Finished', css: '', style: this.HIDDEN_TAB_STYLE })];
 
 
-  constructor(private rootStore: Store<fromRoot.State>, private channelDashboardService: ChannelDashboardService) { }
+  constructor(private rootStore: Store<fromRoot.State>) { }
 
   ngOnInit() {
 
     this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(true));
-    this.dataSource = new ChannelDashboardDataSource(this.channelDashboardService, this.rootStore);
+    this.dataSource = new ChannelDashboardDataSource(this.rootStore);
     this.dataSource.fetchDeals();
   }
 

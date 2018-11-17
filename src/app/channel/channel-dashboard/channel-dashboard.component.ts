@@ -6,7 +6,7 @@ import * as fromRoot from '../../app.reducer';
 
 
 import { Store } from '@ngrx/store';
-import { EDealStatus, Deal } from 'src/app/models/deal.class';
+import { EDealStatus, EDealModality, Deal } from 'src/app/models/deal.class';
 
 @Component({
   selector: 'app-channel-dashboard',
@@ -19,7 +19,7 @@ export class ChannelDashboardComponent implements OnInit {
   dataSourceCompleted: ChannelDashboardDataSource;
   dataSourceFinished: ChannelDashboardDataSource;
 
-  displayedColumnsProposal = ['campaign', 'modality', 'startdate', 'sponsor', 'terms'];
+  displayedColumnsProposal = ['campaign', 'modality', 'status', 'startdate', 'sponsor', 'terms'];
   displayedColumnsCompleted = ['campaign', 'views', 'enddate', 'sponsor', 'terms'];
   displayedColumnsFinished = ['campaign', 'amount', 'enddate', 'sponsor', 'terms'];
 
@@ -58,6 +58,35 @@ export class ChannelDashboardComponent implements OnInit {
 
   filterFinished(deal: Deal): Boolean {
     return  deal.Status == EDealStatus.dm_Finished;
+  }
+
+  displayModality(modality: EDealModality): String {    
+    if(modality === EDealModality.dm_PerView){
+      return 'Per View';
+    }      
+    else if(modality === EDealModality.dm_Total) {
+      return 'Total';
+    }      
+    return 'Not Defined';
+  }
+
+  displayStatus(status: EDealStatus): String {    
+    if(status === EDealStatus.dm_Completed){
+      return 'Completed';
+    }      
+    else if(status === EDealStatus.dm_Accepted) {
+      return 'Accepted';
+    } 
+    else if(status === EDealStatus.dm_Proposal) {
+      return 'Proposal';
+    } 
+    else if(status === EDealStatus.dm_Finished) {
+      return 'Finished';
+    } 
+    else if(status === EDealStatus.dm_Denied) {
+      return 'Denied';
+    }      
+    return 'Not Defined';
   }
 
 

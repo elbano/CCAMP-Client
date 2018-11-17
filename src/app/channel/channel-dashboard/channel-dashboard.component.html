@@ -23,8 +23,13 @@
           
           <ng-container matColumnDef="modality">
             <mat-header-cell *matHeaderCellDef> Modality </mat-header-cell>
-            <mat-cell *matCellDef="let deal"> {{ deal.Modality }} </mat-cell>
-          </ng-container>      
+            <mat-cell *matCellDef="let deal"> {{ displayModality(deal.Modality) }} </mat-cell>
+          </ng-container>     
+          
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ displayStatus(deal.Status) }} </mat-cell>
+          </ng-container>     
 
           <ng-container matColumnDef="startdate">
             <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>

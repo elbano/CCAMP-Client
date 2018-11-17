@@ -3,12 +3,12 @@ import { Sponsor } from './sponsor.class';
 import { Deal } from './deal.class';
 
 export class Campaign {
-    id: number;
-    guid: string;
-    name: string;
-    startDate: Date;
-    endDate: Date;
-    sponsor: Sponsor;
-    advertisementList: Advertisement[];
-    dealList: Deal[];
+    Id: number;
+    Guid: string;
+    Name: string;
+    StartDate: Date;
+    EndDate: Date;
+    Sponsor: Sponsor;
+    AdvertisementList: Advertisement[];
+    DealList: Deal[];
 }

@@ -6,7 +6,7 @@ import { AdMarketplaceComponent } from './ad-marketplace/ad-marketplace.componen
 import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
-   { path: 'channel/:id', component: ChannelDashboardComponent, canActivate: [AuthGuard]},
+   { path: 'channel', component: ChannelDashboardComponent, canActivate: [AuthGuard]},
 //    { path: 'marketplace/:id', component: AdMarketplaceComponent/*, canActivate: [AuthGuard]*/}
 ];
 

@@ -42,7 +42,7 @@ export const getChannelList = createSelector(getMarketState, fromMarket.getChann
 
 // Market Selectors
 export const getChannelState = createFeatureSelector<fromChannel.State>('channel');
-export const getProposalList = createSelector(getChannelState, fromChannel.getProposalList);
+export const getDealList = createSelector(getChannelState, fromChannel.getDealList);
 
 /// BELOW THIS LINE DEVELOPMENT ONLY
 // From the ngrx example app

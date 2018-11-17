@@ -20,7 +20,7 @@ export class ChannelEffects {
 
    @Effect({ dispatch: false})
    getDealList$ = this.actions$.pipe(
-     ofType(ChannelActions.GET_PROPOSAL_LIST),
+     ofType(ChannelActions.GET_DEAL_LIST),
      map(() => {
        // return the API response
        const response = this.channelDashboardService.getDeals();
@@ -34,8 +34,9 @@ export class ChannelEffects {
            });
         }));
      }),
-     map((list: Deal[]) => {       
-       return this.rootStore.dispatch(new ChannelActions.StoreProposalList(list));
+     map((list: Deal[]) => {     
+       console.log(list)  
+       return this.rootStore.dispatch(new ChannelActions.StoreDealList(list));
      })
    );
 }

@@ -15,21 +15,21 @@ export enum EDealModality {
 }
 
 export class Deal {
-    id: number;
-    guid: string;
-    campaign: Campaign;
-    channel: Channel;
-    amount: number;
-    modality: EDealModality;
-    status: EDealStatus; // PROPOSAL, ACCEPTED or ONGOING, FINISHED
+    Id: number;
+    Guid: string;
+    Campaign: Campaign;
+    Channel: Channel;
+    Amount: number;
+    Modality: EDealModality;
+    Status: EDealStatus; // PROPOSAL, ACCEPTED or ONGOING, FINISHED
 
     constructor(options: any) {
-        this.id = options.id;
-        this.guid = options.guid;
-        this.campaign = options.campaign;
-        this.channel = options.channel;
-        this.status = options.status;
-        this.amount = options.amount;
-        this.modality = options.modality;
+        this.Id = options.Id;
+        this.Guid = options.Guid;
+        this.Campaign = options.Campaign;
+        this.Channel = options.Channel;
+        this.Status = options.Status;
+        this.Amount = options.Amount;
+        this.Modality = options.Modality;
     }
 }

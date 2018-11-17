@@ -6,6 +6,7 @@ import * as fromRoot from '../../app.reducer';
 
 
 import { Store } from '@ngrx/store';
+import { EDealStatus, Deal } from 'src/app/models/deal.class';
 
 @Component({
   selector: 'app-channel-dashboard',
@@ -14,14 +15,20 @@ import { Store } from '@ngrx/store';
 })
 export class ChannelDashboardComponent implements OnInit {
 
-  dataSource: ChannelDashboardDataSource;
+  dataSourceProposal: ChannelDashboardDataSource;
+  dataSourceCompleted: ChannelDashboardDataSource;
+  dataSourceFinished: ChannelDashboardDataSource;
+
+  displayedColumnsProposal = ['campaign', 'modality', 'startdate', 'sponsor', 'terms'];
+  displayedColumnsCompleted = ['campaign', 'views', 'enddate', 'sponsor', 'terms'];
+  displayedColumnsFinished = ['campaign', 'amount', 'enddate', 'sponsor', 'terms'];
 
   SELECTED_TAB_CSS_COLOR: String = ' element-app-blue';
   HIDDEN_TAB_STYLE: String = 'none';
 
   tabList: Tab[] = [new Tab({ name: 'Proposals', css: this.SELECTED_TAB_CSS_COLOR }),
-  new Tab({ name: 'Paiments', css: '', style: this.HIDDEN_TAB_STYLE }),
-  new Tab({ name: 'Finished', css: '', style: this.HIDDEN_TAB_STYLE })];
+  new Tab({ name: 'Completed', css: '', style: this.HIDDEN_TAB_STYLE }),
+  new Tab({ name: 'Payed', css: '', style: this.HIDDEN_TAB_STYLE })];
 
 
   constructor(private rootStore: Store<fromRoot.State>) { }
@@ -29,8 +36,28 @@ export class ChannelDashboardComponent implements OnInit {
   ngOnInit() {
 
     this.rootStore.dispatch(new SpinnerActions.SetSpinnerLoadingState(true));
-    this.dataSource = new ChannelDashboardDataSource(this.rootStore);
-    this.dataSource.fetchDeals();
+    
+    this.dataSourceProposal = new ChannelDashboardDataSource(this.rootStore, this.filterProposal);
+    this.dataSourceProposal.fetchDeals();
+
+    this.dataSourceCompleted = new ChannelDashboardDataSource(this.rootStore, this.filterCompleted);
+    this.dataSourceCompleted.fetchDeals();
+
+    this.dataSourceFinished = new ChannelDashboardDataSource(this.rootStore, this.filterFinished);
+    this.dataSourceFinished.fetchDeals();
+    
+  }
+
+  filterProposal(deal: Deal): Boolean {
+    return  deal.Status == EDealStatus.dm_Proposal || deal.Status == EDealStatus.dm_Accepted;
+  }
+
+  filterCompleted(deal: Deal): Boolean {
+    return  deal.Status == EDealStatus.dm_Completed;
+  }
+
+  filterFinished(deal: Deal): Boolean {
+    return  deal.Status == EDealStatus.dm_Finished;
   }
 
 

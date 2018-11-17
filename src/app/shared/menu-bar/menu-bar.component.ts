@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class MenuBarComponent implements OnInit {
 
   sectionList: Section[] = [new Section({ name: 'Discovery', page: '/discovery' }),
-  new Section({ name: 'Channel', page: '/channel', guid: '123456789' }),
+  new Section({ name: 'Channel', page: '/channel' }),
   new Section({ name: 'Campaign', page: '/dashboard', guid: '123456789' })];
 
   constructor(private router: Router) {  }

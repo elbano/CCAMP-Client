@@ -1,40 +1,132 @@
 <app-menu-bar></app-menu-bar>
 
+<!--Run the Spinner until the list is loaded-->
+<!-- <app-spinner [diameter]="100" [strokeWidth]="3" [topStyle]="slideListTopStyle" [rightStyle]="slideListRightStyle"></app-spinner> -->
 <div class="element-container">
 
   <div class="element-bar element-app-grey">
-    <button class="element-bar-item element-button tablink" 
-      [ngClass]="tabList[0].css" (click)="openTab(tabList[0].name)">{{tabList[0].name}}</button>
-    <button class="element-bar-item element-button tablink"
-      [ngClass]="tabList[1].css" (click)="openTab(tabList[1].name)">{{tabList[1].name}}</button>
-    <button class="element-bar-item element-button tablink"
-      [ngClass]="tabList[2].css" (click)="openTab(tabList[2].name)">{{tabList[2].name}}</button>
+    <button class="element-bar-item element-button tablink" [ngClass]="tabList[0].css" (click)="openTab(tabList[0].name)">{{tabList[0].name}}</button>
+    <button class="element-bar-item element-button tablink" [ngClass]="tabList[1].css" (click)="openTab(tabList[1].name)">{{tabList[1].name}}</button>
+    <button class="element-bar-item element-button tablink" [ngClass]="tabList[2].css" (click)="openTab(tabList[2].name)">{{tabList[2].name}}</button>
   </div>
 
   <div id="Proposals" class="element-container element-border" [ngStyle]="{'display':tabList[0].style}">
-    <h2>Proposals</h2>
-    <p>Proposals</p>
+    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="table mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSourceProposal" class="list-center">
+
+          
+          <ng-container matColumnDef="campaign">
+            <mat-header-cell *matHeaderCellDef> Campaign </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Name }} </mat-cell>
+          </ng-container>  
+          
+          <ng-container matColumnDef="modality">
+            <mat-header-cell *matHeaderCellDef> Modality </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Modality }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="startdate">
+            <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.StartDate }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="sponsor">
+            <mat-header-cell *matHeaderCellDef> Sponsor </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Sponsor.CompanyName }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="terms">
+            <mat-header-cell *matHeaderCellDef> Terms & Conditions </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal }} </mat-cell>
+          </ng-container>      
+          
+
+          <mat-header-row *matHeaderRowDef="displayedColumnsProposal"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsProposal" class="row-pointer"></mat-row>
+
+        </mat-table>
+      </div>
+    </section>
   </div>
 
   <div id="Paiments" class="element-container element-border" [ngStyle]="{'display':tabList[1].style}">
-    <h2>Paiments</h2>
-    <p>Paiments</p>
+    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="table mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSourceCompleted" class="list-center">
+
+          
+          <ng-container matColumnDef="campaign">
+            <mat-header-cell *matHeaderCellDef> Campaign </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Name }} </mat-cell>
+          </ng-container>  
+          
+          <ng-container matColumnDef="views">
+            <mat-header-cell *matHeaderCellDef> Views </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Modality }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="enddate">
+            <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.EndDate }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="sponsor">
+            <mat-header-cell *matHeaderCellDef> Sponsor </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Sponsor.CompanyName }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="terms">
+            <mat-header-cell *matHeaderCellDef> Terms & Conditions </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal }} </mat-cell>
+          </ng-container>      
+          
+
+          <mat-header-row *matHeaderRowDef="displayedColumnsCompleted"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsCompleted" class="row-pointer"></mat-row>
+
+        </mat-table>
+      </div>
+    </section>
   </div>
 
   <div id="Finished" class="element-container element-border" [ngStyle]="{'display':tabList[2].style}">
-    <h2>Finished</h2>
-    <p>Finished</p>
+    <section fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="table mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSourceFinished" class="list-center">
+
+          
+          <ng-container matColumnDef="campaign">
+            <mat-header-cell *matHeaderCellDef> Campaign </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Name }} </mat-cell>
+          </ng-container>  
+          
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Modality }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="enddate">
+            <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.EndDate }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="sponsor">
+            <mat-header-cell *matHeaderCellDef> Sponsor </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal.Campaign.Sponsor.CompanyName }} </mat-cell>
+          </ng-container>      
+
+          <ng-container matColumnDef="terms">
+            <mat-header-cell *matHeaderCellDef> Terms & Conditions </mat-header-cell>
+            <mat-cell *matCellDef="let deal"> {{ deal }} </mat-cell>
+          </ng-container>      
+          
+
+          <mat-header-row *matHeaderRowDef="displayedColumnsFinished"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsFinished" class="row-pointer"></mat-row>
+
+        </mat-table>
+      </div>
+    </section>
   </div>
 </div>
-
-<!-- <mat-tab-group>
-  <mat-tab label="Proposal">
-    Tab 1
-  </mat-tab>
-  <mat-tab label="Paiments">
-    Tab 2
-  </mat-tab>
-  <mat-tab label="Finish">
-    Tab 3
-  </mat-tab>
-</mat-tab-group> -->

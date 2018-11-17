@@ -3,21 +3,21 @@ import { ContentCreator } from './content-creator.class';
 import { Content } from 'src/app/models/content.class';
 
 export class Channel {
-    id: number;
-    guid: string;
-    name: string;
-    creationDate: Date;
-    thumbnailURL: string;
-    contentCreator: ContentCreator;
-    contentList: Content[];
-    dealList: Deal[];
+    Id: number;
+    Guid: string;
+    Name: string;
+    CreationDate: Date;
+    ThumbnailURL: string;
+    ContentCreator: ContentCreator;
+    ContentList: Content[];
+    DealList: Deal[];
 
     constructor(options: any) {
-        this.guid = options.guid;
-        this.name = options.name;
-        this.creationDate = options.creationDate;
-        this.contentCreator = options.contentCreator;
-        this.contentList = options.contentList;
-        this.dealList = options.dealList;
+        this.Guid = options.Guid;
+        this.Name = options.Name;
+        this.CreationDate = options.CreationDate;
+        this.ContentCreator = options.ContentCreator;
+        this.ContentList = options.ContentList;
+        this.DealList = options.DealList;
   }
 }

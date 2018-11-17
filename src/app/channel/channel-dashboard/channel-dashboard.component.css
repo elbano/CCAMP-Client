@@ -1,1 +1,12 @@
 /* ::ng-deep .mat-ink-bar:active { width: 160px !important;}  */
+
+.table {
+    width: 80%;
+ }
+ .list-center {
+   text-align: center;
+ }
+ 
+ .row-pointer {
+   cursor: pointer;
+ }

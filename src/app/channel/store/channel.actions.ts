@@ -1,16 +1,16 @@
 import { Action } from '@ngrx/store';
 import { Deal } from '../../models/Deal.class';
 
-export const GET_PROPOSAL_LIST = '[Channel] Get Proposal List'; // DEAL class
-export const STORE_PROPOSAL_LIST = '[Channel] Store Proposal List';
+export const GET_DEAL_LIST = '[Channel] Get Deal List'; // DEAL class
+export const STORE_DEAL_LIST = '[Channel] Store Deal List';
 
-export class GetProposalList implements Action {
-  readonly type = GET_PROPOSAL_LIST;
+export class GetDealList implements Action {
+  readonly type = GET_DEAL_LIST;
 }
 
-export class StoreProposalList implements Action {
-  readonly type = STORE_PROPOSAL_LIST;
+export class StoreDealList implements Action {
+  readonly type = STORE_DEAL_LIST;
   constructor (public payload: Deal[]) { }
 }
 
-export type ChannelActions = GetProposalList | StoreProposalList;
+export type ChannelActions =  StoreDealList | GetDealList;

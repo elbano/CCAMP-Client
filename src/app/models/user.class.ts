@@ -6,9 +6,9 @@ export enum EStatusMode
 }
 
 export class User {
-    guid: string;
-    email: string;
-    userName: string;
-    status: EStatusMode;
-    creationDate: Date;
+    Guid: string;
+    Email: string;
+    UserName: string;
+    Status: EStatusMode;
+    CreationDate: Date;
 }

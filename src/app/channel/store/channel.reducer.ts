@@ -1,4 +1,4 @@
-import { GET_PROPOSAL_LIST, STORE_PROPOSAL_LIST, ChannelActions } from './channel.actions';
+import { GET_DEAL_LIST, STORE_DEAL_LIST, ChannelActions } from './channel.actions';
 import { Deal } from '../../models/Deal.class';
 
 
@@ -13,11 +13,11 @@ export const initialState: State = {
 export function channelReducer(state = initialState, action: ChannelActions) {
   switch (action.type) {
     // Note : This Get Slide list will call Effects under the hood.
-    case GET_PROPOSAL_LIST:
+    case GET_DEAL_LIST:
       return {
         ...state
       };
-    case STORE_PROPOSAL_LIST:
+    case STORE_DEAL_LIST:
       return {
         ...state,
         dealList: [ ...action.payload ]
@@ -31,7 +31,7 @@ export function channelReducer(state = initialState, action: ChannelActions) {
   }
 }
 
-export const getProposalList = (state: State) => {
+export const getDealList = (state: State) => {
   state = typeof state === 'undefined' ? initialState : state;
   return state.dealList;
 };

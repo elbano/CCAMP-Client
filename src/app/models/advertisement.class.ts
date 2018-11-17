@@ -2,11 +2,11 @@ import { Campaign } from './campaign.class';
 import { Transaction } from './transaction.class';
 
 export class Advertisement {
-    id: number;
-    guid: string;
-    name: string;
-    type: string;
-    storageURLMediaPath: string;
-    campaign: Campaign;
-    transactionList: Transaction[];
+    Id: number;
+    Guid: string;
+    Name: string;
+    Type: string;
+    StorageURLMediaPath: string;
+    Campaign: Campaign;
+    TransactionList: Transaction[];
 }

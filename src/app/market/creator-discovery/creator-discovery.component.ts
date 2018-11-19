@@ -10,6 +10,9 @@ import { SubscriptionLike } from 'rxjs';
 import { getChannelList } from '../../app.reducer';
 import { GetChannelList } from '../store/market.actions';
 import { Channel } from 'src/app/models/channel.class';
+import { PaginationService } from 'src/app/services/index';
+//borrar prueba
+//import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Component({
   selector: 'app-creator-discovery',
@@ -26,7 +29,17 @@ export class CreatorDiscoveryComponent implements OnInit {
 
   contentCreatorList: ContentCreator[];
 
-  constructor(private rootStore: Store<fromRoot.State>, private creatorDiscoveryService: CreatorDiscoveryService) { }
+  //Pagination 
+  // array of all items to be paged
+  private allItems: any[];
+
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any[];
+  //constructor(private rootStore: Store<fromRoot.State>, private creatorDiscoveryService: CreatorDiscoveryService, private paginationService: PaginationService, private http: Http) { }
+  constructor(private rootStore: Store<fromRoot.State>, private creatorDiscoveryService: CreatorDiscoveryService, private paginationService: PaginationService) { }
 
   ngOnInit() { 
 
@@ -36,15 +49,28 @@ export class CreatorDiscoveryComponent implements OnInit {
 
     // Make the call to the ngrx store to fetch the channel list against the api
     this.rootStore.dispatch(new MarketActions.GetChannelList());
-
+    
     // We retrieve the channel list by subscribing and setting the value to local variable channelList
     this.channelListSubscription = this.rootStore.pipe(select(getChannelList)).subscribe(channelListResponse => {
       if (channelListResponse) {
          this.channelList = channelListResponse;
+         this.setPage(1);
       }
    });
-
+    
+    if (this.channelList){
+      this.allItems = this.channelList;
+      this.setPage(1);
+    }
     
   }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.paginationService.getPager(this.channelList.length, page);
+
+    // get current page of items
+    this.pagedItems = this.channelList.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
 
 }

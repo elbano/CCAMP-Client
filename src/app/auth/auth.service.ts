@@ -26,7 +26,7 @@ export class AuthService {
         responseType: 'token id_token',
         audience: environment.serverBaseURL + 'api', // Allows authenticated calls to the server API
         redirectUri: environment.clientBaseURLPort + 'callback',
-        scope: 'openid profile',
+        scope: 'openid profile email',
         connection: 'google'
     });
     /**

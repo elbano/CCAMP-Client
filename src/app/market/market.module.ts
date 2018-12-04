@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { marketReducer } from './store/market.reducer';
 import { MarketEffects } from './store/market.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { CreateCampaignComponent } from './create-campaign/create-campaign.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forFeature('market', marketReducer),
     EffectsModule.forFeature([MarketEffects])
   ],
-  declarations: [CampaignDashboardComponent, CreatorDiscoveryComponent],
+  declarations: [CampaignDashboardComponent, CreatorDiscoveryComponent, CreateCampaignComponent],
   providers: [
     CreatorDiscoveryService
   ]

@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CampaignDashboardComponent } from './campaign-dashboard/campaign-dashboard.component';
 import { CreatorDiscoveryComponent } from './creator-discovery/creator-discovery.component';
+import { CreateCampaignComponent } from './create-campaign/create-campaign.component';
 import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
    { path: 'dashboard/:id', component: CampaignDashboardComponent, canActivate: [AuthGuard]},
+   { path: 'campaign', component: CreateCampaignComponent, canActivate: [AuthGuard]},
    { path: 'discovery', component: CreatorDiscoveryComponent/*, canActivate: [AuthGuard]*/}
 ];
 

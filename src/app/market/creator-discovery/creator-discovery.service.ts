@@ -24,4 +24,8 @@ export class CreatorDiscoveryService {
     public getChannels(): Observable<Channel[]> {
         return this.channelEndpoint.fetchChannelListData();
     }
+
+    public getChannelsByKeyWords(keyWords: string): Observable<Channel[]> {
+        return this.channelEndpoint.fetchChannelListDataByKeyWords(keyWords);
+    }
 }

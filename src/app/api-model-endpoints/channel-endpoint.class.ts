@@ -10,4 +10,8 @@ export class ChannelEndpoint {
     public fetchChannelListData(): Observable<Channel[]> {
         return this.http.get<Channel[]>(serverBaseURL + 'api/Channel/');
     }
+
+    public fetchChannelListDataByKeyWords(keyWords): Observable<Channel[]> {
+        return this.http.get<Channel[]>(serverBaseURL + 'api/Channel/keys=' + keyWords);
+    }
 }

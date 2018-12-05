@@ -61,5 +61,18 @@ export class MarketEffects {
      })
    );
 
-
+   @Effect({ dispatch: false})
+   getChannelListKeys$ = this.actions$.pipe(
+     ofType(MarketActions.GET_CHANNEL_LIST_BY_KEYWORD),
+     map((action: any) => {
+      return action.payload;
+     }),
+     switchMap((keyWords: string) => {
+      // return the API response from annotation end point
+      return this.creatorDiscoveryService.getChannelsByKeyWords(keyWords);
+   }),
+     map((list: Channel[]) => {
+       return this.rootStore.dispatch(new MarketActions.StoreChannelListByKeyWord(list));
+     })
+   );
 }

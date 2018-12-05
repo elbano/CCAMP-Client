@@ -1,5 +1,6 @@
 import { GET_CREATOR_LIST, STORE_CREATOR_LIST, GET_CREATOR, STORE_CREATOR,
-  GET_CHANNEL_LIST, STORE_CHANNEL_LIST, MarketActions } from './market.actions';
+  GET_CHANNEL_LIST, STORE_CHANNEL_LIST, MarketActions, GET_CHANNEL_LIST_BY_KEYWORD, 
+  STORE_CHANNEL_LIST_BY_KEYWORD } from './market.actions';
 import { ContentCreator } from '../../models/content-creator.class';
 import { Channel } from '../../models/channel.class';
 
@@ -42,6 +43,15 @@ export function marketReducer(state = initialState, action: MarketActions) {
         ...state
       };
     case STORE_CHANNEL_LIST:
+      return {
+        ...state,
+        channelList: [ ...action.payload ]
+      };
+    case GET_CHANNEL_LIST_BY_KEYWORD:
+      return {
+        ...state
+      };
+    case STORE_CHANNEL_LIST_BY_KEYWORD:
       return {
         ...state,
         channelList: [ ...action.payload ]

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { ContentCreator } from '../../models/content-creator.class';
 import { Channel } from '../../models/channel.class';
+import { User } from 'src/app/models/user.class';
 
 export const GET_CREATOR_LIST = '[Market] Get Creator List';
 export const STORE_CREATOR_LIST = '[Market] Store Creator List';
@@ -17,7 +17,7 @@ export class GetCreatorList implements Action {
 
 export class StoreCreatorList implements Action {
   readonly type = STORE_CREATOR_LIST;
-  constructor (public payload: ContentCreator[]) { }
+  constructor (public payload: User[]) { }
 }
 
 export class GetCreator implements Action {
@@ -27,7 +27,7 @@ export class GetCreator implements Action {
 
 export class StoreCreator implements Action {
   readonly type = STORE_CREATOR;
-  constructor (public payload: ContentCreator) { }
+  constructor (public payload: User) { }
 }
 
 export class GetChannelList implements Action {

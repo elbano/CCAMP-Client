@@ -1,6 +1,6 @@
 import { Advertisement } from './advertisement.class';
-import { Sponsor } from './sponsor.class';
 import { Deal } from './deal.class';
+import { User } from './user.class';
 
 export class Campaign {
     Id: number;
@@ -8,7 +8,7 @@ export class Campaign {
     Name: string;
     StartDate: Date;
     EndDate: Date;
-    Sponsor: Sponsor;
+    SponsorUser: User;
     AdvertisementList: Advertisement[];
     DealList: Deal[];
 }

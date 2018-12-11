@@ -1,13 +1,13 @@
 import { GET_CREATOR_LIST, STORE_CREATOR_LIST, GET_CREATOR, STORE_CREATOR,
   GET_CHANNEL_LIST, STORE_CHANNEL_LIST, MarketActions, GET_CHANNEL_LIST_BY_KEYWORD, 
   STORE_CHANNEL_LIST_BY_KEYWORD } from './market.actions';
-import { ContentCreator } from '../../models/content-creator.class';
 import { Channel } from '../../models/channel.class';
+import { User } from 'src/app/models/user.class';
 
 
 export interface State {
-  creatorList: ContentCreator[];
-  creator: ContentCreator;
+  creatorList: User[];
+  creator: User;
   channelList: Channel[];
 }
 

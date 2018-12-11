@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentCreator } from '../../models/content-creator.class';
 import { CreatorDiscoveryService } from './creator-discovery.service';
 import { CreatorDiscoveryDataSource } from './creator-discovery.datasource';
 import * as SpinnerActions from '../../shared/spinner/store/spinner.actions';
@@ -8,11 +7,8 @@ import { Store, select } from '@ngrx/store';
 import * as MarketActions from '../store/market.actions';
 import { SubscriptionLike } from 'rxjs';
 import { getChannelList } from '../../app.reducer';
-import { GetChannelList } from '../store/market.actions';
 import { Channel } from 'src/app/models/channel.class';
 import { PaginationService } from 'src/app/services/index';
-//borrar prueba
-//import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Component({
   selector: 'app-creator-discovery',
@@ -28,8 +24,6 @@ export class CreatorDiscoveryComponent implements OnInit {
   searchString: string;
 
   displayedColumns = ['thumbnail', 'name', 'creationdate'];
-
-  contentCreatorList: ContentCreator[];
 
   //Pagination 
   // array of all items to be paged

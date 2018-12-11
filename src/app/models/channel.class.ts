@@ -1,6 +1,6 @@
 import { Deal } from './deal.class';
-import { ContentCreator } from './content-creator.class';
 import { Content } from 'src/app/models/content.class';
+import { User } from './user.class';
 
 export class Channel {
     Id: number;
@@ -8,7 +8,7 @@ export class Channel {
     Name: string;
     CreationDate: Date;
     ThumbnailURL: string;
-    ContentCreator: ContentCreator;
+    ContentCreatorUser: User;
     ContentList: Content[];
     DealList: Deal[];
 
@@ -16,7 +16,7 @@ export class Channel {
         this.Guid = options.Guid;
         this.Name = options.Name;
         this.CreationDate = options.CreationDate;
-        this.ContentCreator = options.ContentCreator;
+        this.ContentCreatorUser = options.ContentCreatorUser;
         this.ContentList = options.ContentList;
         this.DealList = options.DealList;
   }

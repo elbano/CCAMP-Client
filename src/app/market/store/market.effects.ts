@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 
 import * as fromRoot from '../../app.reducer';
 import * as MarketActions from './market.actions';
-import { ContentCreator } from '../../models/content-creator.class';
 import { CreatorDiscoveryService } from '../creator-discovery/creator-discovery.service';
 import { Channel } from '../../models/channel.class';
+import { User } from 'src/app/models/user.class';
 
 @Injectable()
 export class MarketEffects {
@@ -32,11 +32,11 @@ export class MarketEffects {
         // Note map here iterates through each element of array and modifies them
         return creatorListJSON.pipe(map(creatorList => {
            return creatorList.map(creator => {
-              return new ContentCreator(creator);
+              return new User(creator);
            });
         }));
      }),
-     map((list: ContentCreator[]) => {
+     map((list: User[]) => {
        return this.rootStore.dispatch(new MarketActions.StoreCreatorList(list));
      })
    );

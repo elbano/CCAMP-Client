@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ContentCreatorEndpoint } from '../../api-model-endpoints/content-creator-endpoint.class';
-import { ContentCreator } from '../../models/content-creator.class';
 import { Observable } from 'rxjs';
 import { Channel } from '../../models/channel.class';
 import { ChannelEndpoint } from '../../api-model-endpoints/channel-endpoint.class';
+import { User } from 'src/app/models/user.class';
 
 @Injectable()
 export class CreatorDiscoveryService {
@@ -17,7 +17,7 @@ export class CreatorDiscoveryService {
         this.channelEndpoint = new ChannelEndpoint(http);
     }
 
-    public getCreators(): Observable<ContentCreator[]> {
+    public getCreators(): Observable<User[]> {
         return this.contentCreatorEndpoint.fetchCreatorListData();
     }
 

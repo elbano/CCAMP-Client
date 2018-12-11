@@ -5,7 +5,6 @@ import { select, Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app.reducer';
 import * as SpinnerActions from '../../shared/spinner/store/spinner.actions';
-import { ContentCreator } from '../../models/content-creator.class';
 import { GetCreatorList, GetChannelList } from '../store/market.actions';
 import { getCreatorList, getChannelList } from '../../app.reducer';
 import { CreatorDiscoveryService } from './creator-discovery.service';

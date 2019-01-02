@@ -23,10 +23,12 @@ export class User {
     constructor(options?: any) {
         if (options) {
             this.Guid = options.Guid;
-            this.Name = options.Came;
-            this.LastName = options.CastName;
+            this.Name = options.Name;
+            this.LastName = options.LastName;
             this.CompanyName = options.CompanyName;
             this.ChannelList = options.ChannelList;
+            this.Email = options.Email;
+            this.UserName = options.UserName;
         }
 
     }

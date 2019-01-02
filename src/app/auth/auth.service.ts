@@ -6,6 +6,9 @@ import * as fromRoot from '../app.reducer';
 import { environment } from '../../environments/environment';
 import * as AuthActions from './auth.actions';
 import { LogService } from '../core/services/logger.service';
+import { UserEndpoint } from '../api-model-endpoints/user-endpoint.class';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user.class';
 
 /**
  * A class to contain all of the authentication specific implmentation
@@ -14,6 +17,8 @@ import { LogService } from '../core/services/logger.service';
  */
 @Injectable()
 export class AuthService {
+
+    userEndpoint: UserEndpoint;
 
     /**
      * Configure the auth0 instance
@@ -38,7 +43,9 @@ export class AuthService {
      * TODO: Update state on the store with the dispatch method.
      * TODO: Get state from the store with the select method.
      */
-    constructor(private rootStore: Store<fromRoot.State>, private logger: LogService) { }
+    constructor(private rootStore: Store<fromRoot.State>, private logger: LogService, private http: HttpClient) { 
+        this.userEndpoint = new UserEndpoint(http);
+    }
 
     /**
      * The main function to start the login process
@@ -78,6 +85,18 @@ export class AuthService {
                 window.location.hash = '';
                 authResult.expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
                 this.rootStore.dispatch(new AuthActions.SetAuthenticated(authResult));
+                const authJson = JSON.parse(localStorage.getItem('auth'));
+                // console.log(authJson.authResult.idTokenPayload.email); // send in user data and register if does not exist
+                const user = new User({
+                    Name: authJson.authResult.idTokenPayload.given_name,
+                    LastName: authJson.authResult.idTokenPayload.family_name,
+                    UserName: authJson.authResult.idTokenPayload.nickname,
+                    Email: authJson.authResult.idTokenPayload.email
+                });
+                this.userEndpoint.setUserDataWithUser(user).subscribe(
+                    response => console.log(response),
+                    err => console.log(err)
+                  );
             } else if (err) {
                 this.rootStore.dispatch(new AuthActions.SetUnauthenticated());
                 this.logger.log(err);

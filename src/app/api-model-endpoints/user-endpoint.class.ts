@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { serverBaseURL } from '../shared/serverBasedUrl';
 import { User } from '../models/user.class';
-import { catchError, map } from 'rxjs/operators';
 
 export class UserEndpoint {
 

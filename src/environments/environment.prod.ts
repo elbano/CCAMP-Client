@@ -8,5 +8,6 @@ export const environment = {
   authDomain: 'ccampapi.auth0.com',
   clientBaseURLPort: window.location.protocol + '//' +
     window.location.hostname + ':' + window.location.port + '/',
-  clientLoggingLevel: LoggingLevels.WARN
+  clientLoggingLevel: LoggingLevels.WARN,
+  googleClientId: 'VICTOR NO SE CUAL ES'
 };

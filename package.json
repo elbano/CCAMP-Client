@@ -35,7 +35,8 @@
     "core-js": "2.5.4",
     "rxjs": "6.2.0",
     "zone.js": "0.8.26",
-    "webpack": "4.24.0"
+    "webpack": "4.24.0",
+    "angular-oauth2-oidc": "^5.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.8.0",

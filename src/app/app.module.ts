@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { reducers, metaReducers } from './app.reducer';
 import { SharedModule } from './shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router' // name of the reducer key
-   })
+   }),
+   OAuthModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
